@@ -8,6 +8,7 @@ function ContainerFullPage({ children }: any) {
     <Container
       maxWidth={false}
       sx={{
+        height: '100vh',
         backgroundColor: (theme) =>
           theme.palette.background.default,
       }}>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage/homepage";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
+import Homepage from "./pages/Homepage/Homepage";
 import { ThemeProvider } from '@mui/material/styles';
 import ContainerFullPage from "./Components/ContainerFullPage/ContainerFullPage";
 import Header from "./Components/Header/Header";
@@ -28,6 +28,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<SignIn />} />
                 <Route path="/signUp" element={<SignUp />} />
+                <Route path="repository" element={<Homepage />} />
               </Routes>
             </>
           </ContainerFullPage>

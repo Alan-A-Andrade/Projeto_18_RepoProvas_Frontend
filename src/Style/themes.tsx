@@ -26,6 +26,15 @@ let lightTheme = createTheme({
     h3: {
       color: '#111111',
     },
+    h4: {
+      color: '#111111',
+    },
+    h5: {
+      color: '#111111',
+    },
+    h6: {
+      color: '#111111',
+    },
   }
 })
 
@@ -43,6 +52,9 @@ let darkTheme = createTheme({
     },
   },
   typography: {
+    body1: {
+      color: '#ffffff',
+    },
     h1: {
       color: '#ffffff',
     },
@@ -50,6 +62,15 @@ let darkTheme = createTheme({
       color: '#ffffff',
     },
     h3: {
+      color: '#ffffff',
+    },
+    h4: {
+      color: '#ffffff',
+    },
+    h5: {
+      color: '#ffffff',
+    },
+    h6: {
       color: '#ffffff',
     },
   }

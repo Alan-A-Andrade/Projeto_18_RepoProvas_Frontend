@@ -13,11 +13,13 @@ import * as api from '../../Api/api';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
-
+import { errServer } from '../../modals/errModal'
+import { useTheme } from "@emotion/react";
 
 export default function SignIn() {
 
   const { auth, logIn } = useAuth()
+  const theme = useTheme()
 
   const navigate = useNavigate();
 
@@ -35,7 +37,6 @@ export default function SignIn() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-
     try {
       const token: any = await api.signIn({
         email: signIn.email,
@@ -45,7 +46,7 @@ export default function SignIn() {
       logIn(token)
       navigate('/repository')
     } catch (error) {
-
+      errServer(theme, "Something went wrong, try again later!")
       console.log(error)
 
     }

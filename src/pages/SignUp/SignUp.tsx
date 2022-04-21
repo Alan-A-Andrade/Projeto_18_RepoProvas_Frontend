@@ -12,10 +12,12 @@ import Divider from '@mui/material/Divider';
 import * as api from '../../Api/api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useTheme } from "@emotion/react";
+import { errServer } from '../../modals/errModal';
 
 export default function SignUp() {
 
+  const theme = useTheme()
   const [error, setError] = useState({})
   const navigate = useNavigate();
   const [signUpForm, setSignUpForm] = useState({
@@ -42,6 +44,8 @@ export default function SignUp() {
       })
       navigate('/signIn')
     } catch (error) {
+      errServer(theme, "Something went wrong, try again later!")
+
       console.log(error)
 
     }
