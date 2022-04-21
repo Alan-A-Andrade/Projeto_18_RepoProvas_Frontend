@@ -26,6 +26,8 @@ export default function SignUp() {
     confirmPassword: "",
   });
 
+  const [loading, setLoading] = useState(false)
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -38,14 +40,16 @@ export default function SignUp() {
     }
 
     try {
+      setLoading(true)
       await api.signUp({
         email: signUpForm.email,
         password: signUpForm.password
       })
+      setLoading(false)
       navigate('/signIn')
     } catch (error) {
       errServer(theme, "Something went wrong, try again later!")
-
+      setLoading(false)
       console.log(error)
 
     }
@@ -175,7 +179,10 @@ export default function SignUp() {
                   component="h1"
                   variant="button"
                 >
-                  Cadastrar
+                  {loading
+                    ? "Carregando"
+                    : "Cadastrar"
+                  }
                 </Typography>
               </Button>
             </Grid>

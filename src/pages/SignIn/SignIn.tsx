@@ -34,21 +34,24 @@ export default function SignIn() {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false)
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     try {
+      setLoading(true)
       const token: any = await api.signIn({
         email: signIn.email,
         password: signIn.password
       })
-
       logIn(token)
+      setLoading(false)
       navigate('/repository')
     } catch (error) {
       errServer(theme, "Something went wrong, try again later!")
       console.log(error)
-
+      setLoading(false)
     }
   }
 
@@ -148,12 +151,15 @@ export default function SignIn() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 4, mb: 2 }}
+                disabled={loading}
               >
                 <Typography
                   component="h1"
                   variant="button"
                 >
-                  Entrar
+                  {loading
+                    ? "Carregando"
+                    : "Entrar"}
                 </Typography>
               </Button>
             </Grid>

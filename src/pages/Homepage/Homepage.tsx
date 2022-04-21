@@ -22,7 +22,8 @@ import { useTheme } from '@emotion/react';
 
 export default function Homepage() {
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  const [color, setColor] = React.useState({})
 
   const theme: any = useTheme()
 
@@ -30,6 +31,9 @@ export default function Homepage() {
 
   const handleClick = () => {
     setOpen(!open);
+    setColor(!open
+      ? { color: '#3F61D7', }
+      : {})
   };
 
   return (
@@ -43,7 +47,7 @@ export default function Homepage() {
       }}>
 
         <List
-          sx={{ width: '100%', maxWidth: 1200, bgcolor: 'background.paper' }}
+          sx={{ width: '100%', maxWidth: "none", bgcolor: 'background.paper' }}
           component="nav"
           aria-labelledby="nested-list-subheader"
           subheader={
@@ -67,8 +71,8 @@ export default function Homepage() {
           </ListItemButton>
           <Divider></Divider>
           <ListItemButton onClick={handleClick}>
-            <ListItemText primary={<Typography component="h1" variant="body1" >
-              Item 1
+            <ListItemText primary={<Typography sx={color} component="h1" variant="body1" >
+              Item 3
             </Typography>
             } />
             {open ? <ExpandLess color="secondary" /> : <ExpandMore sx={{ color: theme.palette.mode === 'dark' ? '#ffffff' : '#111111', }} />}
@@ -81,6 +85,12 @@ export default function Homepage() {
               </ListItemButton>
             </List>
           </Collapse>
+          <ListItemButton>
+            <ListItemText primary={<Typography component="h1" variant="body1" >
+              Item 4
+            </Typography>
+            } />
+          </ListItemButton>
         </List>
       </Container >
     </Container>
