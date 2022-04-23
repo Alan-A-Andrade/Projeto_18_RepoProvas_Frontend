@@ -42,11 +42,11 @@ function Header(Props: any) {
             : <img src={logo} alt="" />
           }
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={3}>
           <SwitchThemeMode state={Props.state} setState={Props.setState} />
         </Grid>
         {auth &&
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             <Avatar sx={{ m: 0.5, bgcolor: 'secondary.main' }}>
               <LogoutOutlinedIcon onClick={handleLogOff} />
             </Avatar>

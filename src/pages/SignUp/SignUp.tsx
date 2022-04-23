@@ -46,7 +46,7 @@ export default function SignUp() {
         password: signUpForm.password
       })
       setLoading(false)
-      navigate('/signIn')
+      navigate('/')
     } catch (error) {
       errServer(theme, "Something went wrong, try again later!")
       setLoading(false)

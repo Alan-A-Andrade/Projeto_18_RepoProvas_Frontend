@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_URL || "http://10.0.0.107:5000"
+const BASE_URL = process.env.REACT_APP_URL || "https://repo-provas-alan.herokuapp.com"
 
 
 export interface authData {
