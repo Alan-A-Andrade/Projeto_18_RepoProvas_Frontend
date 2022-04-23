@@ -17,6 +17,12 @@ let lightTheme = createTheme({
     }
   },
   typography: {
+    body1: {
+      color: '#111111',
+    },
+    body2: {
+      color: '#111111',
+    },
     h1: {
       color: '#111111',
     },
@@ -53,6 +59,9 @@ let darkTheme = createTheme({
   },
   typography: {
     body1: {
+      color: '#ffffff',
+    },
+    body2: {
       color: '#ffffff',
     },
     h1: {

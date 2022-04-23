@@ -70,12 +70,20 @@ export default function SignIn() {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h3">
-          Entrar
-        </Typography>
+        <Box sx={{
+          marginTop: 0,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h3">
+            Entrar
+          </Typography>
+        </Box>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid item xs={12} sm={6}>
             <Button
@@ -130,7 +138,6 @@ export default function SignIn() {
               />
             </Grid>
           </Grid>
-
           <Grid container spacing={2} alignContent="center">
             <Grid item xs={12} sm={6}>
               <Typography

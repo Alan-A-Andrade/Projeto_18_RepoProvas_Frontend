@@ -74,13 +74,21 @@ export default function SignUp() {
           flexDirection: 'column',
           alignItems: 'center',
         }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <PersonPinRoundedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h3">
-          Cadastro
-        </Typography>
+      ><Box
+        sx={{
+          marginTop: 0,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <PersonPinRoundedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h3">
+            Cadastro
+          </Typography>
+        </Box>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid item xs={12} sm={6}>
             <Button

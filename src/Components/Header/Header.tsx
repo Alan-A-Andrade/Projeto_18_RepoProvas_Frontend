@@ -7,7 +7,7 @@ import useAuth from '../../Hooks/useAuth';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from "react-router-dom";
-
+import Divider from "@mui/material/Divider";
 
 function Header(Props: any) {
 
@@ -42,15 +42,21 @@ function Header(Props: any) {
             : <img src={logo} alt="" />
           }
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <SwitchThemeMode state={Props.state} setState={Props.setState} />
         </Grid>
         {auth &&
-          <Avatar sx={{ m: 2.5, bgcolor: 'secondary.main' }}>
-            <LogoutOutlinedIcon onClick={handleLogOff} />
-          </Avatar>
+          <Grid item xs={2}>
+            <Avatar sx={{ m: 0.5, bgcolor: 'secondary.main' }}>
+              <LogoutOutlinedIcon onClick={handleLogOff} />
+            </Avatar>
+          </Grid>
         }
       </Grid>
+      {
+        auth &&
+        <Divider sx={{ m: 1 }}></Divider>
+      }
     </Container >
   )
 }
