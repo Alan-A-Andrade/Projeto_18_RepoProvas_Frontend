@@ -14,6 +14,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from "@emotion/react";
 import { errServer } from '../../modals/errModal';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
 
 export default function SignUp() {
 
@@ -103,9 +105,11 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 4, mb: 0 }}
-            >
-              <Typography
 
+            >
+              <GitHubIcon sx={{ mr: 1, bgcolor: 'secondary.main' }} />
+              <Typography
+                sx={{ mt: 0.2 }}
                 component="h1"
                 variant="button"
               >

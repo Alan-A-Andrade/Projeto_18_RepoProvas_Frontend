@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import { errServer } from '../../modals/errModal'
 import { useTheme } from "@emotion/react";
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 export default function SignIn() {
 
@@ -86,6 +87,7 @@ export default function SignIn() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
+
           <Typography
             component="h1"
             variant="h3">
@@ -101,7 +103,9 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 4, mb: 0 }}
             >
+              <GitHubIcon sx={{ mr: 1, bgcolor: 'secondary.main' }} />
               <Typography
+                sx={{ mt: 0.2 }}
                 component="h1"
                 variant="button"
               >
