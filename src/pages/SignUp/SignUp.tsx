@@ -175,7 +175,7 @@ export default function SignUp() {
               <Typography
                 component="div"
                 variant="subtitle2"
-                sx={{ mt: 2, mb: 1 }}
+                sx={{ mt: 2, mb: 2 }}
                 color="secondary"
                 textAlign="left"
                 onClick={() => { navigate('/') }}
@@ -189,7 +189,7 @@ export default function SignUp() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 0, mb: 2 }}
+                sx={{ mt: 2, mb: 2 }}
               >
                 <Typography
                   component="h1"
