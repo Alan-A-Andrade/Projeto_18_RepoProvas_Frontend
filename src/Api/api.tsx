@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_URL || "https://repo-provas-alan.herokuapp.com"
+const BASE_URL = process.env.REACT_APP_URL || "http://10.0.0.107:5000"
 
 
 export interface authData {
@@ -8,9 +8,21 @@ export interface authData {
   password: string
 }
 
+
+
+export const urlOAuthGitHub = 'https://github.com/login/oauth/authorize?client_id=941b0093a2cb7c9a9182'
+
+
 function createConfig(token: string) {
 
   return { headers: { 'Authorization': `${token}` } }
+}
+
+export async function signUpGitHub(code: string) {
+
+  const data = axios.post(`${BASE_URL}/auth/signIn/oauth/github`, { code: code })
+  console.log(data)
+  return data
 }
 
 export async function signUp(data: authData) {

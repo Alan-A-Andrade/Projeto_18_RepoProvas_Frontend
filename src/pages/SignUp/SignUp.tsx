@@ -62,6 +62,12 @@ export default function SignUp() {
     setError({})
   }
 
+  async function handleSignInGitHub() {
+
+    window.location.replace(api.urlOAuthGitHub)
+
+  }
+
 
 
   return (
@@ -92,16 +98,18 @@ export default function SignUp() {
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid item xs={12} sm={6}>
             <Button
+              onClick={handleSignInGitHub}
               color="secondary"
               fullWidth
               variant="contained"
               sx={{ mt: 4, mb: 0 }}
             >
               <Typography
+
                 component="h1"
                 variant="button"
               >
-                Cadastrar com GitHub
+                Entrar com GitHub
               </Typography>
             </Button>
           </Grid>
@@ -167,7 +175,7 @@ export default function SignUp() {
               <Typography
                 component="div"
                 variant="subtitle2"
-                sx={{ mt: 4, mb: 2 }}
+                sx={{ mt: 2, mb: 1 }}
                 color="secondary"
                 textAlign="left"
                 onClick={() => { navigate('/') }}
@@ -181,7 +189,7 @@ export default function SignUp() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 4, mb: 2 }}
+                sx={{ mt: 0, mb: 2 }}
               >
                 <Typography
                   component="h1"

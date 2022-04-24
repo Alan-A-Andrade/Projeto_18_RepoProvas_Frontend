@@ -8,6 +8,7 @@ import Header from "./Components/Header/Header";
 import { darkTheme, lightTheme } from "./Style/themes";
 import { AuthProvider } from "./Contexts/authContexts";
 import { useState } from "react";
+import Redirect from "./pages/Redirect/Redirect";
 
 function App() {
 
@@ -28,7 +29,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<SignIn />} />
                 <Route path="/signUp" element={<SignUp />} />
-                <Route path="repository" element={<Homepage />} />
+                <Route path="/repository" element={<Homepage />} />
+                <Route path="/signin/oauth2/github" element={<Redirect />} />
               </Routes>
             </>
           </ContainerFullPage>
