@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import * as services from "../../Services/Services"
 
-
 import { DisciplineList } from '../../Components/List/DisciplineList/DisciplineList';
 import { TeacherList } from '../../Components/List/TeacherList/TeacherList';
-
+import CircularProgress from '@mui/material/CircularProgress';
+import { Typography } from '@mui/material';
 
 export default function Homepage() {
 
@@ -17,6 +17,8 @@ export default function Homepage() {
     teacher: []
   })
   const { auth } = useAuth()
+
+  const [loading, setLoading] = useState(false)
 
   const [option, setOption] = useState('DISCIPLINA');
 
@@ -27,9 +29,13 @@ export default function Homepage() {
     setOption(newOption);
   };
 
-
+  function sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   async function fetchData() {
+    setLoading(true)
+    await sleep(5000);
     try {
       const discipline: any = await services.fetchDisciplineData(auth)
       const teacher: any = await services.feachTeachersData(auth)
@@ -37,9 +43,11 @@ export default function Homepage() {
         discipline,
         teacher
       })
+
+      setLoading(false)
     }
     catch {
-      console.log(console.error)
+      setLoading(false)
     }
   }
 
@@ -61,7 +69,17 @@ export default function Homepage() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-      }}>
+      }}>{
+          loading && <>
+            <CircularProgress color='secondary' />
+            <Typography
+              color='secondary'
+              sx={{ mt: 2 }}
+              component="h1"
+              variant="button"
+            >Carregando</Typography>
+          </>
+        }
         {option === 'DISCIPLINA'
           ? <DisciplineList repository={repository.discipline} />
           : option === 'PESSOA INSTRUTORA'

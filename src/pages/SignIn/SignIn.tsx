@@ -49,9 +49,13 @@ export default function SignIn() {
       logIn(token)
       setLoading(false)
       navigate('/repository')
-    } catch (error) {
-      errServer(theme, "Something went wrong, try again later!")
-      console.log(error)
+    } catch (error: any) {
+      if (error.response.status === 401) {
+        errServer(theme, "Incorrect Email/Password")
+      }
+      else {
+        errServer(theme, "Something went wrong, try again later!")
+      }
       setLoading(false)
     }
   }
