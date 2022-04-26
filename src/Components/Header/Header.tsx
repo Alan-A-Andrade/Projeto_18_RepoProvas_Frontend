@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import { useNavigate } from "react-router-dom";
 import Divider from "@mui/material/Divider";
 
+
 function Header(Props: any) {
 
   const { logOff, auth } = useAuth()
@@ -20,6 +21,8 @@ function Header(Props: any) {
 
 
   }
+
+
 
   return (
     <Container maxWidth={false} sx={{
@@ -46,8 +49,11 @@ function Header(Props: any) {
           <SwitchThemeMode state={Props.state} setState={Props.setState} />
         </Grid>
         {auth &&
-          <Grid item xs={3}>
-            <Avatar sx={{ m: 0.5, bgcolor: 'secondary.main' }}>
+          <Grid
+            container
+            justifyContent="center"
+            alignContent="center" item xs={3}>
+            <Avatar sx={{ bgcolor: 'secondary.main' }}>
               <LogoutOutlinedIcon onClick={handleLogOff} />
             </Avatar>
           </Grid>

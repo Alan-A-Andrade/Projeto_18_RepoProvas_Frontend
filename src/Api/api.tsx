@@ -21,7 +21,6 @@ function createConfig(token: string) {
 export async function signUpGitHub(code: string) {
 
   const data = axios.post(`${BASE_URL}/auth/signIn/oauth/github`, { code: code })
-  console.log(data)
   return data
 }
 

@@ -45,7 +45,7 @@ export async function fetchDisciplineData(token: string) {
 }
 
 
-export async function feachTeachersData(token: string) {
+export async function fetchTeachersData(token: string) {
 
   const categories: any[] = await api.getAllCategories(token)
 
@@ -99,3 +99,17 @@ export async function feachTeachersData(token: string) {
   return data
 }
 
+export async function fetchDisciplines(token: string) {
+
+  const disciplines: any[] = await api.getAllDisciplines(token)
+
+  return disciplines
+
+}
+
+export async function fetchTeachers(token: string) {
+
+  const teachers: any[] = await api.getAllTeachers(token)
+
+  return teachers
+}

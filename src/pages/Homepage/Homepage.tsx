@@ -9,6 +9,7 @@ import { DisciplineList } from '../../Components/List/DisciplineList/DisciplineL
 import { TeacherList } from '../../Components/List/TeacherList/TeacherList';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography } from '@mui/material';
+import * as filter from '../../utils/filter'
 
 export default function Homepage() {
 
@@ -16,33 +17,47 @@ export default function Homepage() {
     discipline: [],
     teacher: []
   })
+
+  const [repositoryFiltered, setRepositoryFiltered] = useState<any>({
+    discipline: [],
+    teacher: []
+  })
+
   const { auth } = useAuth()
 
   const [loading, setLoading] = useState(false)
 
   const [option, setOption] = useState('DISCIPLINA');
 
+  const [searchValue, setSearchValue] = useState("")
+
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newOption: string,
   ) => {
-    setOption(newOption);
+    setOption(newOption)
+    setSearchValue("")
   };
 
-  function sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  function handleSearchInput(input: string) {
+    setSearchValue(input)
   }
+
+
 
   async function fetchData() {
     setLoading(true)
-    await sleep(5000);
     try {
       const discipline: any = await services.fetchDisciplineData(auth)
-      const teacher: any = await services.feachTeachersData(auth)
+      const teacher: any = await services.fetchTeachersData(auth)
+
       setRepository({
         discipline,
         teacher
       })
+
+      console.log(filter.filterTeacher(teacher, "Fula"))
+
 
       setLoading(false)
     }
@@ -51,9 +66,18 @@ export default function Homepage() {
     }
   }
 
+
+
   useEffect(() => {
     fetchData()
   }, []);
+
+  useEffect(() => {
+    setRepositoryFiltered({
+      discipline: filter.filterDiscipline(repository.discipline, searchValue),
+      teacher: filter.filterTeacher(repository.teacher, searchValue)
+    })
+  }, [searchValue, repository, option]);
 
   //"DISCIPLINA":"PESSOA INSTRUTORA":"ADICIONAR":
 
@@ -63,6 +87,8 @@ export default function Homepage() {
       <TopMenu
         option={option}
         handleChange={handleChange}
+        searchValue={searchValue}
+        handleSearch={handleSearchInput}
       />
       <Container component="main" maxWidth="xl" sx={{
         marginTop: 0,
@@ -81,9 +107,9 @@ export default function Homepage() {
           </>
         }
         {option === 'DISCIPLINA'
-          ? <DisciplineList repository={repository.discipline} />
+          ? <DisciplineList repository={repositoryFiltered.discipline} />
           : option === 'PESSOA INSTRUTORA'
-            ? <TeacherList repository={repository.teacher} />
+            ? <TeacherList repository={repositoryFiltered.teacher} />
             : <></>
         }
 

@@ -52,7 +52,6 @@ export default function SignUp() {
     } catch (error) {
       errServer(theme, "Something went wrong, try again later!")
       setLoading(false)
-      console.log(error)
 
     }
   }
