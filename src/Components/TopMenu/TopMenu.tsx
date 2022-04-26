@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import useAuth from '../../Hooks/useAuth';
 import * as services from "../../Services/Services"
+import { Box } from '@mui/material';
 
 
 function TopMenu({ option, handleChange, searchValue, handleSearch }: any) {
@@ -70,29 +71,38 @@ function TopMenu({ option, handleChange, searchValue, handleSearch }: any) {
 
   return (
     <>
-      <Autocomplete
-        sx={{ mb: 4 }}
-        id="free-solo-demo"
-        disabled={isDisable}
-        freeSolo
-        options={list.map((el) => el.name)}
-        autoComplete={true}
-        onInputChange={(e, value) => handleSearch(value)}
-        renderInput={(params) =>
-          <TextField
-            {...params}
-            label={labels.searchBar}
-            variant="filled"
-            InputLabelProps={{
-              color: "secondary"
-            }}
-            fullWidth={false}
-            sx={{ width: '50%', minWidth: '300px' }}
-            size="small"
-            value={searchValue}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
 
-          />}
-      />
+        <Autocomplete
+          sx={{ mb: 4, width: "60vw", minWidth: '300px', alignSelf: "center" }}
+
+          id="free-solo-demo"
+          disabled={isDisable}
+          freeSolo
+          options={list.map((el) => el.name)}
+          autoComplete={true}
+          onInputChange={(e, value) => handleSearch(value)}
+          renderInput={(params) =>
+            <TextField
+              {...params}
+              label={labels.searchBar}
+              variant="filled"
+              InputLabelProps={{
+                color: "secondary"
+              }}
+              fullWidth={true}
+              size="small"
+              value={searchValue}
+
+            />}
+        />
+      </Box>
       <ToggleButtonGroup
         color="secondary"
         value={option}
