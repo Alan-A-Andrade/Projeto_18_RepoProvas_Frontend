@@ -82,7 +82,7 @@ function TopMenu({ option, handleChange, searchValue, handleSearch }: any) {
         <Autocomplete
           sx={{ mb: 4, width: "60vw", minWidth: '300px', alignSelf: "center" }}
 
-          id="free-solo-demo"
+          id="search-autocomplete"
           disabled={isDisable}
           freeSolo
           options={list.map((el) => el.name)}
@@ -114,7 +114,6 @@ function TopMenu({ option, handleChange, searchValue, handleSearch }: any) {
         <ToggleButton value="PESSOA INSTRUTORA">PESSOA INSTRUTORA</ToggleButton>
         <ToggleButton value="ADICIONAR">ADICIONAR</ToggleButton>
       </ToggleButtonGroup>
-      <Typography sx={{ m: 2 }}>{labels.subtitle}</Typography>
     </>
   );
 

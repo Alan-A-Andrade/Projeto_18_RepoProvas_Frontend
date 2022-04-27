@@ -73,3 +73,10 @@ export async function getAllDisciplines(token: string) {
 
   return data.data
 }
+
+export async function createTest(token: string, data: any) {
+  const config = createConfig(token)
+
+  await axios.post(`${BASE_URL}/test`, data, config)
+
+}

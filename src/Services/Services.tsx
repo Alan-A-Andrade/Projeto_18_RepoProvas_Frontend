@@ -113,3 +113,18 @@ export async function fetchTeachers(token: string) {
 
   return teachers
 }
+
+
+export async function fetchCategories(token: string) {
+
+  const categories: any[] = await api.getAllCategories(token)
+
+  return categories
+}
+
+export async function fetchTerms(token: string) {
+
+  const terms: any[] = await api.getAllTerms(token)
+
+  return terms
+}

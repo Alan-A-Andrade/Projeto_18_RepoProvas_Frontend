@@ -7,6 +7,7 @@ import * as services from "../../Services/Services"
 
 import { DisciplineList } from '../../Components/List/DisciplineList/DisciplineList';
 import { TeacherList } from '../../Components/List/TeacherList/TeacherList';
+import { NewTest } from '../../Components/NewTest/NewTest';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography } from '@mui/material';
 import * as filter from '../../utils/filter'
@@ -55,9 +56,6 @@ export default function Homepage() {
         discipline,
         teacher
       })
-
-      console.log(filter.filterTeacher(teacher, "Fula"))
-
 
       setLoading(false)
     }
@@ -110,7 +108,7 @@ export default function Homepage() {
           ? <DisciplineList repository={repositoryFiltered.discipline} />
           : option === 'PESSOA INSTRUTORA'
             ? <TeacherList repository={repositoryFiltered.teacher} />
-            : <></>
+            : <NewTest />
         }
 
       </Container >
