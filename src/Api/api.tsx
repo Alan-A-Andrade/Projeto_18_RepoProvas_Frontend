@@ -80,3 +80,10 @@ export async function createTest(token: string, data: any) {
   await axios.post(`${BASE_URL}/test`, data, config)
 
 }
+
+export async function addViewCount(token: string, id: number) {
+  const config = createConfig(token)
+
+  await axios.patch(`${BASE_URL}/test/${id}/addView`, {}, config)
+
+}

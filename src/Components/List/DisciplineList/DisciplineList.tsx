@@ -35,6 +35,8 @@ export function DisciplineList({ repository }: any) {
                       name={el.testName}
                       url={el.testPDFUrl}
                       teacher={el.teacher[0]}
+                      id={el.testId}
+                      views={el.testViews}
                     />)}
                 </CategoryItem>)
               }

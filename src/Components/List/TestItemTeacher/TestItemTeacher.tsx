@@ -4,13 +4,29 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@emotion/react';
 import Divider from '@mui/material/Divider';
+import useAuth from '../../../Hooks/useAuth';
+import * as api from '../../../Api/api';
 
 
-export function TestItemTeacher({ name, url, discipline }: any) {
+export function TestItemTeacher({ name, url, discipline, id, views }: any) {
 
-  const handleClick = () => {
+  const { auth } = useAuth()
+
+  const handleClick = async () => {
     window.open(url, "_blank");
+    await handleAddViewCount()
   };
+
+
+  async function handleAddViewCount() {
+
+    try {
+      await api.addViewCount(auth, id)
+
+    } catch (error) {
+
+    }
+  }
 
   return (
     <>
@@ -20,10 +36,13 @@ export function TestItemTeacher({ name, url, discipline }: any) {
             {name}
           </Typography>
         } secondary={
-          <Typography component="h1" variant="body2" >
-            {discipline}
+          <Typography sx={{ opacity: 0.5 }} component="h1" variant="body2" >
+            {`${discipline}`}
           </Typography>
         } />
+        <Typography sx={{ opacity: 0.5 }} component="h1" variant="body2" >
+          {`Visualizações: ${views}`}
+        </Typography>
       </ListItemButton>
       <Divider></Divider>
     </>

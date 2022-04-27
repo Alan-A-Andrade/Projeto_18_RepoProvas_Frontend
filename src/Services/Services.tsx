@@ -27,6 +27,7 @@ export async function fetchDisciplineData(token: string) {
                     test.teacherDisciplineId === teacherDiscipline.id).map((test: any) => {
                       return {
                         testId: test.id,
+                        testViews: test.views,
                         testName: test.name,
                         testPDFUrl: test.pdfUrl,
                         teacher: teachers.filter(teacher => teacher.id === teacherDiscipline.teacherId)
@@ -86,6 +87,7 @@ export async function fetchTeachersData(token: string) {
                   return {
                     testName: el.name,
                     testId: el.id,
+                    testViews: el.views,
                     testPdfUrl: el.pdfUrl,
                     testDisciplineId: el.teachersDisciplines.disciplineId,
                     testDisciplineName: disciplines.find((discipline: any) => discipline.id === el.teachersDisciplines.disciplineId).name
