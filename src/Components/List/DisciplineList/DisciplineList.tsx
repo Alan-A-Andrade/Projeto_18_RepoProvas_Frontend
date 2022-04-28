@@ -24,7 +24,7 @@ export function DisciplineList({ repository }: any) {
               key={`discipline_${id}`}
               name={el.disciplineName}
             >
-              {el.teacherDisciplines[0].categories.map((el: any, id: any) =>
+              {el.categories.map((el: any, id: any) =>
                 <CategoryItem
                   key={`category_${id}`}
                   name={el.categoryName}
@@ -33,8 +33,8 @@ export function DisciplineList({ repository }: any) {
                     <TestItem
                       key={`test_${id}`}
                       name={el.testName}
-                      url={el.testPDFUrl}
-                      teacher={el.teacher[0]}
+                      url={el.pdfUrl}
+                      teacher={el.teacherName}
                       id={el.testId}
                       views={el.testViews}
                     />)}

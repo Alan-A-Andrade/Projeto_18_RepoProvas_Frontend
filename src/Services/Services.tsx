@@ -9,6 +9,7 @@ export async function fetchDisciplineData(token: string) {
 
   const teachers: any[] = await api.getAllTeachers(token)
 
+
   const data = terms.map(term => {
     return {
       termId: term.id,
@@ -17,30 +18,30 @@ export async function fetchDisciplineData(token: string) {
         return {
           disciplineId: discipline.id,
           disciplineName: discipline.name,
-          teacherDisciplines: discipline.teachersDisciplines.map((teacherDiscipline: any) => {
+          categories: categories.map((category: any) => {
             return {
-              categories: categories.map(category => {
+              categoryId: category.id,
+              categoryName: category.name,
+              tests: category.tests.map((test: any) => {
                 return {
-                  categoryId: category.id,
-                  categoryName: category.name,
-                  tests: category.tests.filter((test: any) =>
-                    test.teacherDisciplineId === teacherDiscipline.id).map((test: any) => {
-                      return {
-                        testId: test.id,
-                        testViews: test.views,
-                        testName: test.name,
-                        testPDFUrl: test.pdfUrl,
-                        teacher: teachers.filter(teacher => teacher.id === teacherDiscipline.teacherId)
-                      }
-                    })
+                  testId: test.id,
+                  testName: test.name,
+                  pdfUrl: test.pdfUrl,
+                  testViews: test.views,
+                  disciplineId: test.teachersDisciplines.disciplineId,
+                  teacherName: teachers.find((teacher: any) => teacher.id === test.teachersDisciplines.teacherId).name,
                 }
-              })
+              }).filter((test: any) => test.disciplineId === discipline.id)
             }
           })
         }
       })
     }
-  })
+  }
+  )
+
+  console.log(teachers)
+  console.log(data)
 
   return data
 }

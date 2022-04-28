@@ -16,7 +16,6 @@ import { useTheme } from "@emotion/react";
 import { errServer } from '../../modals/errModal';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-
 export default function SignUp() {
 
   const theme = useTheme()
@@ -56,8 +55,6 @@ export default function SignUp() {
     }
   }
 
-
-
   function handleFormInput(event: any) {
     setSignUpForm({ ...signUpForm, [event.target.name]: event.target.value })
     setError({})
@@ -68,8 +65,6 @@ export default function SignUp() {
     window.location.replace(api.urlOAuthGitHub)
 
   }
-
-
 
   return (
     <Container component="main" maxWidth="xs">
@@ -104,7 +99,6 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 4, mb: 0 }}
-
             >
               <GitHubIcon sx={{ mr: 1, bgcolor: 'secondary.main' }} />
               <Typography

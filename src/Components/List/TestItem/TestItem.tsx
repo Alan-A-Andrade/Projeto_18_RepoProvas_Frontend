@@ -37,7 +37,7 @@ export function TestItem({ name, url, teacher, id, views }: any) {
           </Typography>
         } secondary={
           <Typography sx={{ opacity: 0.5 }} component="h1" variant="body2" >
-            {`${teacher.name}`}
+            {`${teacher}`}
           </Typography>
         } />
         <Typography sx={{ opacity: 0.5 }} component="h1" variant="body2" >
