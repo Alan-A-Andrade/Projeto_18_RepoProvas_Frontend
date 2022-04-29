@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@emotion/react';
 import Divider from '@mui/material/Divider';
-import useAuth from '../../../Hooks/useAuth';
-import * as api from '../../../Api/api';
+import useAuth from '../../../../Hooks/useAuth';
+import * as api from '../../../../Api/api';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import Box from '@mui/material/Box';
 
 
 export function TestItem({ name, url, teacher, id, views }: any) {
@@ -40,9 +40,14 @@ export function TestItem({ name, url, teacher, id, views }: any) {
             {`${teacher}`}
           </Typography>
         } />
-        <Typography sx={{ opacity: 0.5 }} component="h1" variant="body2" >
-          {`Visualizações: ${views}`}
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography sx={{ opacity: 0.1 }} component="h1" variant="body2" >
+            <VisibilityIcon />
+          </Typography>
+          <Typography sx={{ opacity: 0.5 }} component="h1" variant="body2" >
+            {`${views}`}
+          </Typography>
+        </Box>
       </ListItemButton>
       <Divider></Divider>
     </>

@@ -10,12 +10,15 @@ import Autocomplete from '@mui/material/Autocomplete';
 import * as services from '../../Services/Services'
 import useAuth from '../../Hooks/useAuth';
 import * as api from '../../Api/api';
+import { successModal } from '../../modals/sucessModal';
 
 
 
 export const NewTest: React.FC<{}> = () => {
 
   const { auth } = useAuth()
+
+  const theme = useTheme()
 
   const [optionList, setOptionList] = useState<any>({
     discipline: [],
@@ -24,7 +27,6 @@ export const NewTest: React.FC<{}> = () => {
     terms: []
   })
 
-  const theme = useTheme()
   const [createTestForm, setCreateTestForm] = useState({
     title: "",
     pdf: "",
@@ -53,8 +55,16 @@ export const NewTest: React.FC<{}> = () => {
       setLoading(true)
 
       await api.createTest(auth, data)
-
+      successModal(theme, "Prova adicionada ao repositório")
+      setCreateTestForm({
+        title: "",
+        pdf: "",
+        category: "",
+        discipline: "",
+        teacher: ""
+      });
       setLoading(false)
+
 
     } catch (error) {
       errServer(theme, "Something went wrong, try again later!")
@@ -219,7 +229,7 @@ export const NewTest: React.FC<{}> = () => {
               size="small"
             />}
         />
-        <Button
+        <Button sx={{ mb: 5 }}
           color="secondary"
           type="submit"
           fullWidth

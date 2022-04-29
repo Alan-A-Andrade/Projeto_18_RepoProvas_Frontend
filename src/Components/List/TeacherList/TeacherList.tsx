@@ -1,9 +1,9 @@
 
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import { CategoryItem } from '../CategoryItem/CategoryItem';
-import { TeacherItem } from '../TeacherItem/TeacherItem';
-import { TestItemTeacher } from '../TestItemTeacher/TestItemTeacher';
+import { CategoryItem } from '../Itens/CategoryItem/CategoryItem';
+import { TeacherItem } from '../Itens/TeacherItem/TeacherItem';
+import { TestItemTeacher } from '../Itens/TestItemTeacher/TestItemTeacher';
 
 export function TeacherList({ repository }: any) {
 

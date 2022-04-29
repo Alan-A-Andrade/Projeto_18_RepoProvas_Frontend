@@ -1,10 +1,11 @@
 
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import { TermItem } from '../TermItem/TermItem';
-import { DisciplineItem } from '../DisciplineItem/DisciplineItem';
-import { CategoryItem } from '../CategoryItem/CategoryItem';
-import { TestItem } from '../TestItem/TestItem';
+import { TermItem } from '../Itens/TermItem/TermItem';
+import { DisciplineItem } from '../Itens/DisciplineItem/DisciplineItem';
+import { CategoryItem } from '../Itens/CategoryItem/CategoryItem';
+import { TestItem } from '../Itens/TestItem/TestItem';
+
 
 export function DisciplineList({ repository }: any) {
 

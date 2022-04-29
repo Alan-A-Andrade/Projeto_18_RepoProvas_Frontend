@@ -40,9 +40,6 @@ export async function fetchDisciplineData(token: string) {
   }
   )
 
-  console.log(teachers)
-  console.log(data)
-
   return data
 }
 

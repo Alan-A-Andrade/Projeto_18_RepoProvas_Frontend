@@ -44,8 +44,6 @@ export default function Homepage() {
     setSearchValue(input)
   }
 
-
-
   async function fetchData() {
     setLoading(true)
     try {
@@ -64,8 +62,6 @@ export default function Homepage() {
     }
   }
 
-
-
   useEffect(() => {
     fetchData()
   }, []);
@@ -76,8 +72,6 @@ export default function Homepage() {
       teacher: filter.filterTeacher(repository.teacher, searchValue)
     })
   }, [searchValue, repository, option]);
-
-  //"DISCIPLINA":"PESSOA INSTRUTORA":"ADICIONAR":
 
 
   return (
@@ -95,7 +89,7 @@ export default function Homepage() {
         alignItems: 'center',
       }}>{
           loading && <>
-            <CircularProgress color='secondary' />
+            <CircularProgress sx={{ mt: 2 }} color='secondary' />
             <Typography
               color='secondary'
               sx={{ mt: 2 }}
