@@ -14,8 +14,8 @@ import { successModal } from '../../modals/sucessModal';
 
 
 
-export const NewTest: React.FC<{}> = () => {
-
+export function NewTest(Props: any) {
+  
   const { auth } = useAuth()
 
   const theme = useTheme()
@@ -63,6 +63,8 @@ export const NewTest: React.FC<{}> = () => {
         discipline: "",
         teacher: ""
       });
+
+      Props.setReload(!Props.reloadState)
       setLoading(false)
 
 

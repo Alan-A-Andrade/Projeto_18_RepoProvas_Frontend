@@ -14,30 +14,29 @@ import * as filter from '../../utils/filter'
 
 export default function Homepage() {
 
+  const { auth } = useAuth()
+  const [loading, setLoading] = useState(false)
+  const [reload, setReload] = useState(false)
+  const [option, setOption] = useState('DISCIPLINA');
+  const [searchValue, setSearchValue] = useState("")
   const [repository, setRepository] = useState<any>({
     discipline: [],
     teacher: []
   })
-
   const [repositoryFiltered, setRepositoryFiltered] = useState<any>({
     discipline: [],
     teacher: []
   })
 
-  const { auth } = useAuth()
-
-  const [loading, setLoading] = useState(false)
-
-  const [option, setOption] = useState('DISCIPLINA');
-
-  const [searchValue, setSearchValue] = useState("")
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newOption: string,
   ) => {
+    if (newOption !== null) {
     setOption(newOption)
     setSearchValue("")
+    }
   };
 
   function handleSearchInput(input: string) {
@@ -64,7 +63,7 @@ export default function Homepage() {
 
   useEffect(() => {
     fetchData()
-  }, []);
+  }, [reload]);
 
   useEffect(() => {
     setRepositoryFiltered({
@@ -102,7 +101,7 @@ export default function Homepage() {
           ? <DisciplineList repository={repositoryFiltered.discipline} />
           : option === 'PESSOA INSTRUTORA'
             ? <TeacherList repository={repositoryFiltered.teacher} />
-            : <NewTest />
+            : <NewTest reloadState={reload} setReload={setReload} />
         }
 
       </Container >
