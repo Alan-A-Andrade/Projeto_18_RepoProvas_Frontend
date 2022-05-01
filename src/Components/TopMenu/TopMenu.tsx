@@ -36,6 +36,8 @@ function TopMenu({ option, handleChange, searchValue, handleSearch }: any) {
 
 
   useEffect(() => {
+
+    
     if (option === "DISCIPLINA") {
       setList(optionList.discipline)
       setIsDisable(false)
