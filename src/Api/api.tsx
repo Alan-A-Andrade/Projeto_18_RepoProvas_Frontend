@@ -77,7 +77,21 @@ export async function getAllDisciplines(token: string) {
 export async function createTest(token: string, data: any) {
   const config = createConfig(token)
 
-  await axios.post(`${BASE_URL}/test`, data, config)
+  const formData = new FormData()
+
+  formData.append("name", data.name)
+  formData.append("pdfUrl", data.pdfUrl)
+  formData.append("categoryId", data.categoryId)
+  formData.append("teacherDisciplineId", data.teacherDisciplineId)
+
+  await axios.post(`${BASE_URL}/test`, formData,
+    {
+      headers:
+      {
+        ...config.headers,
+        "Content-Type": "multipart/form-data",
+      }
+    })
 
 }
 

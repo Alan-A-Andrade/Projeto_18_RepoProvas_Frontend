@@ -15,7 +15,7 @@ import { successModal } from '../../modals/sucessModal';
 
 
 export function NewTest(Props: any) {
-  
+
   const { auth } = useAuth()
 
   const theme = useTheme()
@@ -55,7 +55,7 @@ export function NewTest(Props: any) {
       setLoading(true)
 
       await api.createTest(auth, data)
-      successModal(theme, "Prova adicionada ao repositório")
+      successModal(theme, "Prova adicionada ao repositório", true)
       setCreateTestForm({
         title: "",
         pdf: "",

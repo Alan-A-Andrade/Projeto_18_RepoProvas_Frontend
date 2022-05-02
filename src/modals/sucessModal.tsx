@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 
-export function successModal(theme: any, message: string) {
+export function successModal(theme: any, message: string, reload?: boolean) {
 
   Swal.fire({
     icon: "success",
@@ -11,6 +11,10 @@ export function successModal(theme: any, message: string) {
     timerProgressBar: true,
     showConfirmButton: false,
     position: 'center',
+  }).then(() => {
+    if (reload) {
+      window.location.reload()
+    }
   });
 }
 
